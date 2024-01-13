@@ -1,7 +1,9 @@
 <Layout title="$title">
   <h1>$title</h1>
 
-  <ul foreach="$data as $item">
-    <li>$item->title</li>
+  <ul>
+    <li foreach="$data as $item">
+      <a href="/todo/{$item['id']}">{$item['title']}</l>
+    </li>
   </ul>
 </Layout>

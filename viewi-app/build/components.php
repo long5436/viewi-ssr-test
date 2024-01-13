@@ -114,6 +114,41 @@ return array (
       'Path' => '\\Components\\Views\\NotFound\\NotFoundPage.php',
       'Function' => 'RenderNotFoundPage',
     ),
+    'TodoPage' => 
+    array (
+      'Namespace' => 'Components\\Views\\Todo',
+      'Name' => 'TodoPage',
+      'dependencies' => 
+      array (
+        'http' => 
+        array (
+          'name' => 'HttpClient',
+        ),
+        'id' => 
+        array (
+          'name' => 'int',
+          'builtIn' => 1,
+        ),
+      ),
+      'hooks' => 
+      array (
+        'init' => 1,
+      ),
+      'inputs' => 
+      array (
+        'title' => 1,
+        'data' => 1,
+        'id' => 1,
+        '__id' => 1,
+        '_props' => 1,
+        '_element' => 1,
+        '_refs' => 1,
+        '_slots' => 1,
+      ),
+      'base' => 1,
+      'Path' => '\\Components\\Views\\Todo\\TodoPage.php',
+      'Function' => 'RenderTodoPage',
+    ),
     'CssBundle' => 
     array (
       'Namespace' => 'Viewi\\Components\\Assets',
@@ -253,6 +288,8 @@ return array (
     'RenderLayout' => 'Layout',
     'RenderNotFoundPage' => 'NotFoundPage',
     'RenderNotFoundPage_Layout_default' => 'NotFoundPage',
+    'RenderTodoPage' => 'TodoPage',
+    'RenderTodoPage_Layout_default' => 'TodoPage',
     'RenderCssBundle' => 'CssBundle',
     'RenderViewiAssets' => 'ViewiAssets',
   ),
@@ -270,7 +307,7 @@ return array (
   array (
     'app' => '/viewi-default/viewi.js',
     'app-min' => '/viewi-default/viewi.min.js',
-    'build-id' => 'KbL86qzC',
+    'build-id' => 'Azquj1Pk',
     'minify' => false,
     'append-version' => false,
     'components' => '/viewi-default/viewi.json',
