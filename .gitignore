@@ -1,2 +1,6 @@
 node_modules
 vendor
+viewi-default
+viewi-app/build
+viewi-app/js/dist
+viewi-app/js/app/main/resources/index.js
