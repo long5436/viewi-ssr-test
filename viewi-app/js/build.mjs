@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import * as esbuild from 'esbuild'
+import * as esbuild from 'esbuild';
 import * as chokidar from 'chokidar';
 import anymatch from 'anymatch';
 import path from 'path';
@@ -26,18 +26,31 @@ process.argv.forEach(function (val, index, array) {
 const runBuild = async function () {
   const base = {
     entryPoints: ['./viewi/index.ts'],
-    logLevel: "info",
+    logLevel: 'info',
     treeShaking: true,
     bundle: true,
   };
 
   await esbuild.build({ ...base, outfile: './dist/viewi.js' });
-  await esbuild.build({ ...base, minify: true, outfile: './dist/viewi.min.js' });
+  await esbuild.build({
+    ...base,
+    minify: true,
+    outfile: './dist/viewi.min.js',
+  });
 
   for (let group in lazyGroups) {
     const entry = lazyGroups[group];
-    await esbuild.build({ ...base, entryPoints: [entry], outfile: `./dist/viewi.${group}.js` });
-    await esbuild.build({ ...base, entryPoints: [entry], minify: true, outfile: `./dist/viewi.${group}.min.js` });
+    await esbuild.build({
+      ...base,
+      entryPoints: [entry],
+      outfile: `./dist/viewi.${group}.js`,
+    });
+    await esbuild.build({
+      ...base,
+      entryPoints: [entry],
+      minify: true,
+      outfile: `./dist/viewi.${group}.min.js`,
+    });
   }
 
   // build actions
@@ -45,7 +58,7 @@ const runBuild = async function () {
     const buildItem = buildActions.items[i];
     switch (buildItem.type) {
       case 'css': {
-        const cssItems = buildItem.data.links.map(x => './../assets' + x);
+        const cssItems = buildItem.data.links.map((x) => './../assets' + x);
         const buildList = [];
         if (buildItem.data.combine) {
           buildList.push(cssItems);
@@ -61,7 +74,7 @@ const runBuild = async function () {
             const purgeCSSResult = await new PurgeCSS().purge({
               content: ['./../**/*.js', './../**/*.php', './../**/*.html'],
               css: entries,
-              skippedContentGlobs: ['**/node_modules/**', '**/build/**']
+              skippedContentGlobs: ['**/node_modules/**', '**/build/**'],
             });
             for (let i = 0; i < purgeCSSResult.length; i++) {
               const purgedCSS = purgeCSSResult[i];
@@ -77,7 +90,7 @@ const runBuild = async function () {
               contents: combinedCss,
               // These are all optional:
               resolveDir: './../assets',
-              loader: 'css'
+              loader: 'css',
             },
             // entryPoints: buildItem.data.links.map(x => './../assets' + x),
             bundle: true,
@@ -85,14 +98,18 @@ const runBuild = async function () {
             external: ['*.png', '*.jpg'],
             minify: !!buildItem.data.minify,
             // outdir: './dist/assets',
-            outfile: './dist/assets' + (buildItem.data.combine ? buildItem.data.output : buildItem.data.links[c]),
+            outfile:
+              './dist/assets' +
+              (buildItem.data.combine
+                ? buildItem.data.output
+                : buildItem.data.links[c]),
           });
         }
         break;
       }
       default: {
         console.warn(`Type action ${buildItem.type} is not implemented.`);
-        break
+        break;
       }
     }
   }
@@ -128,12 +145,22 @@ const runBuildAll = async function () {
 let buildTimer = 0;
 
 const runWatch = async function () {
-  const ignored = ['**/build/**', '/js/dist/**', '/js/viewi/**', '**/node_modules/**', '**/app/**', '**/combined.css'];
+  const ignored = [
+    '**/build/**',
+    '/js/dist/**',
+    '/js/viewi/**',
+    '**/node_modules/**',
+    '**/app/**',
+    '**/combined.css',
+  ];
   // https://github.com/paulmillr/chokidar
   chokidar.watch(['.\\..\\']).on('all', (event, itemPath) => {
-    const normalizedPath = path.normalize(itemPath).replace(/\\/g, '/').replace('..', '');
+    const normalizedPath = path
+      .normalize(itemPath)
+      .replace(/\\/g, '/')
+      .replace('..', '');
     // https://www.npmjs.com/package/anymatch
-    if (!anymatch(ignored, normalizedPath, {dot: true})) {
+    if (!anymatch(ignored, normalizedPath, { dot: true })) {
       // console.log(event, normalizedPath);
       if (buildTimer) {
         clearTimeout(buildTimer);
