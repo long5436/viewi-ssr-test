@@ -1,6 +1,6 @@
 {
     "require": {
-        "viewi/viewi": "^2.2"
+        "viewi/viewi": "^2.2.2"
     },
     "autoload": {
         "psr-4": {

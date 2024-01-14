@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c3f2037f2657764faf438c36226b0a8f",
+    "content-hash": "395f7863bd4ccb0afb993d8c677b5991",
     "packages": [
         {
             "name": "nikic/php-parser",
@@ -64,16 +64,16 @@
         },
         {
             "name": "viewi/viewi",
-            "version": "v2.2.0",
+            "version": "v2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/viewi/viewi.git",
-                "reference": "35afe9d516508ff11761ccf1bc05d4749b494ebd"
+                "reference": "39d8eccd0bc9e0ead3de95c47938471d270ee9aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/viewi/viewi/zipball/35afe9d516508ff11761ccf1bc05d4749b494ebd",
-                "reference": "35afe9d516508ff11761ccf1bc05d4749b494ebd",
+                "url": "https://api.github.com/repos/viewi/viewi/zipball/39d8eccd0bc9e0ead3de95c47938471d270ee9aa",
+                "reference": "39d8eccd0bc9e0ead3de95c47938471d270ee9aa",
                 "shasum": ""
             },
             "require": {
@@ -117,7 +117,7 @@
             ],
             "support": {
                 "issues": "https://github.com/viewi/viewi/issues",
-                "source": "https://github.com/viewi/viewi/tree/v2.2.0"
+                "source": "https://github.com/viewi/viewi/tree/v2.2.2"
             },
             "funding": [
                 {
@@ -125,7 +125,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2024-01-13T06:39:57+00:00"
+            "time": "2024-01-14T08:29:25+00:00"
         }
     ],
     "packages-dev": [],
@@ -136,5 +136,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
